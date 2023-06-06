@@ -7,6 +7,7 @@ const {
   GraphQLSchema,
   GraphQLID,
   GraphQLString,
+  GraphQLList,
   GraphQLNonNull,
 } = graphql;
 
@@ -28,6 +29,13 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         // return _.find(words, { id: args.id });
         return WordOfDay.findById(args.id);
+      },
+    },
+    words: {
+      type: new GraphQLList(WordOfDayType),
+      resolve(parent, args) {
+        // return authors;
+        return WordOfDay.find({});
       },
     },
   },
