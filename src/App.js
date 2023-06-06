@@ -30,6 +30,7 @@ function App() {
     );
     const data = await res.json();
     setSearchResults(data[0]);
+    setWord('');
   }
 
   const wordData = {
